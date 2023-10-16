@@ -1,0 +1,13 @@
+<div class="cd-timeline__block">
+  <div class="cd-timeline__img cd-timeline__img--picture" style="background-color: {{event.backgroundColor}}">
+  </div>
+
+  <div class="cd-timeline__content text-component">
+    <h2>{{event.title}}</h2>
+    <p class="color-contrast-medium">{{event.content}}</p>
+
+    <div class="flex justify-between items-center">
+      <span class="cd-timeline__date">{{event.startDate | date:'longDate'}}</span>
+    </div>
+  </div>
+</div>
