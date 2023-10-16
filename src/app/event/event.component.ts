@@ -17,6 +17,7 @@ export class EventComponent implements OnInit {
     console.log('Getting event ' + this.elementNumber);
 
     const eventRaw = JSON.parse(sessionStorage.getItem(`event${this.elementNumber}`) || JSON.stringify(new Event(
+      'event0',
       'Title of section 1',
       'Content of section 1',
       new Date(),
@@ -25,6 +26,7 @@ export class EventComponent implements OnInit {
       'rgba(200,100,100,1)')));
 
     const event = new Event(
+      eventRaw.id,
       eventRaw.title,
       eventRaw.content,
       eventRaw.startDate,

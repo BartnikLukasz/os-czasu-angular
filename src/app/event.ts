@@ -1,4 +1,5 @@
 export class Event {
+  id: string;
   title: string;
   content: string;
   startDate: Date;
@@ -7,6 +8,7 @@ export class Event {
   backgroundColor: string;
 
   constructor(
+    id: string,
     title: string,
     content: string,
     startDate: Date,
@@ -14,6 +16,7 @@ export class Event {
     category: string,
     backgroundColor: string
   ) {
+    this.id = id;
     this.title = title;
     this.content = content;
     this.startDate = startDate;

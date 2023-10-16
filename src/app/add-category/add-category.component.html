@@ -1,0 +1,12 @@
+<form #categoryForm="ngForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" [(ngModel)]="category.name">
+  </div>
+  <div>
+    <label for="backgroundColor">Background Color:</label>
+    <input type="color" id="backgroundColor" name="backgroundColor" [(ngModel)]="category.backgroundColor">
+  </div>
+
+  <button type="submit">Save</button>
+</form>

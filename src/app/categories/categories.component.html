@@ -1,1 +1,18 @@
-<p>categories works!</p>
+<div class="flex flex-row" *ngFor="let category of categories">
+  <form>
+    <input type="hidden" [(ngModel)]="category.id" [name]="category.id">
+    <label>
+      Category Name:
+      <input type="text" [(ngModel)]="category.name" [value]="category.name" [name]="category.name">
+    </label>
+    <br>
+    <label>
+      Background Color:
+      <input type="color" [(ngModel)]="category.backgroundColor" [value]="category.backgroundColor" [name]="category.backgroundColor">
+    </label>
+    <br>
+    <button (click)="onUpdate(category)">Update</button>
+    <button (click)="onDelete(category.id)">Delete</button>
+  </form>
+</div>
+<app-add-category></app-add-category>
