@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Category } from '../category';
 
 @Component({
@@ -8,6 +8,7 @@ import { Category } from '../category';
 })
 export class AddCategoryComponent {
   category: Category = new Category('', '', '');
+  @Output() emitter: EventEmitter<any> = new EventEmitter();
 
   onSubmit() {
     var numberOfCategories = Number(sessionStorage.getItem('numberOfCategories'));
@@ -15,5 +16,6 @@ export class AddCategoryComponent {
     sessionStorage.setItem(this.category.id, JSON.stringify(this.category));
 
     sessionStorage.setItem('numberOfCategories', String(numberOfCategories + 1));
+    this.emitter.emit('added category');
   }
 }

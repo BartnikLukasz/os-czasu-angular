@@ -1,18 +1,21 @@
-<div class="flex flex-row" *ngFor="let category of categories">
-  <form>
-    <input type="hidden" [(ngModel)]="category.id" [name]="category.id">
-    <label>
-      Category Name:
-      <input type="text" [(ngModel)]="category.name" [value]="category.name" [name]="category.name">
-    </label>
-    <br>
-    <label>
-      Background Color:
-      <input type="color" [(ngModel)]="category.backgroundColor" [value]="category.backgroundColor" [name]="category.backgroundColor">
-    </label>
-    <br>
-    <button (click)="onUpdate(category)">Update</button>
-    <button (click)="onDelete(category.id)">Delete</button>
-  </form>
+<div class="flex bg-teal-400 space-x-4">
+  <div>
+    <h1 class="font-bold text-center text-4xl mb-2">Category list</h1>
+    <div *ngFor="let category of categories">
+      <form class="flex bg-emerald-200 shadow-md rounded px-2 pt-2 pb-2 mb-2 space-x-4">
+        <input type="hidden" [(ngModel)]="category.id" [name]="category.id">
+        <label class="pt-1">
+          Category Name:
+          <input type="text" [(ngModel)]="category.name" [value]="category.name" [name]="category.name">
+        </label>
+        <label class="pb-1">
+          Background Color:
+          <input type="color" [(ngModel)]="category.backgroundColor" [value]="category.backgroundColor" [name]="category.backgroundColor">
+        </label>
+        <button class="shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 rounded" (click)="onUpdate(category)">Update</button>
+        <button class="shadow bg-red-500 hover:bg-red-400 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 rounded" (click)="onDelete(category.id)">Delete</button>
+      </form>
+    </div>
+  </div>
+  <app-add-category (emitter)="refreshCategories()"></app-add-category>
 </div>
-<app-add-category></app-add-category>

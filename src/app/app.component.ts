@@ -17,13 +17,13 @@ export class AppComponent {
     var category0 = new Category(
       'category0',
       'Category 0',
-      'rgba(200,100,100,1)'
+      '#993333'
     );
 
     var category1 = new Category(
       'category1',
       'Category 1',
-      'rgba(100,200,200,1)'
+      '#339999'
     );
 
     var event0 = new Event(

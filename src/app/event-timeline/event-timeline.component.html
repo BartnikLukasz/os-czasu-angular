@@ -1,5 +1,5 @@
 <section class="cd-timeline js-cd-timeline">
   <div class="container max-width-lg cd-timeline__container">
-    <app-event *ngFor="let item of [].constructor(numberOfEvents); index as i" [elementNumber]="i"></app-event>
+    <app-event *ngFor="let event of events; index as i" [event]="event" (handleDelete)="handleDeleteEvent('event')"></app-event>
   </div>
 </section>

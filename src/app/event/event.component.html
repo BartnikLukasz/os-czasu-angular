@@ -6,6 +6,8 @@
     <h2>{{event.title}}</h2>
     <p class="color-contrast-medium">{{event.content}}</p>
 
+    <app-edit-event (handleDelete)="childEvent(event.id)" [eventId]="event.id"></app-edit-event>
+
     <div class="flex justify-between items-center">
       <span class="cd-timeline__date">{{event.startDate | date:'longDate'}}</span>
     </div>

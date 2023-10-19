@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
 import { Category } from '../category';
 
 @Component({
@@ -18,7 +18,7 @@ export class CategoriesComponent {
         JSON.stringify(new Category(
           'category0',
           'Category 0',
-          'rgba(200,100,100,1)'
+          '#993333'
         ))));
     }
   }
@@ -30,11 +30,12 @@ export class CategoriesComponent {
 
   onDelete(categoryId: string) {
     sessionStorage.removeItem(categoryId);
+    console.log('Removing item: '+categoryId);
     sessionStorage.setItem('numberOfCategories', String(this.numberOfCategories - 1));
     this.refreshCategories();
   }
 
-  refreshCategories() {
+  public refreshCategories() {
     this.categories = [];
 
     this.numberOfCategories = Number(sessionStorage.getItem('numberOfCategories'));
@@ -46,5 +47,9 @@ export class CategoriesComponent {
           'rgba(200,100,100,1)'
         ))));
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    this.refreshCategories();
   }
 }

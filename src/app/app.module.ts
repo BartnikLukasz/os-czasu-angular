@@ -9,6 +9,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { EventComponent } from './event/event.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
+import { EditEventComponent } from './edit-event/edit-event.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AddCategoryComponent } from './add-category/add-category.component';
     CategoriesComponent,
     EventComponent,
     AddEventComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    EditEventComponent
   ],
   imports: [
     BrowserModule,

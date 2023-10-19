@@ -1,12 +1,15 @@
-<form #categoryForm="ngForm" (ngSubmit)="onSubmit()">
+<h1 class="font-bold text-center text-4xl mb-2">Add category</h1>
+<form class="flex flex-row bg-emerald-200 shadow-md rounded px-4 pt-2 pb-2 mb-2 space-x-6" #categoryForm="ngForm" (ngSubmit)="onSubmit()">
   <div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" [(ngModel)]="category.name">
+    <label class="pt-1" for="name">Name:
+      <input type="text" id="name" name="name" [(ngModel)]="category.name">
+    </label>
   </div>
   <div>
-    <label for="backgroundColor">Background Color:</label>
-    <input type="color" id="backgroundColor" name="backgroundColor" [(ngModel)]="category.backgroundColor">
+    <label for="backgroundColor">Background Color:
+      <input type="color" id="backgroundColor" name="backgroundColor" [(ngModel)]="category.backgroundColor">
+    </label>
   </div>
 
-  <button type="submit">Save</button>
+  <button class="shadow bg-green-500 hover:bg-green-400 focus:shadow-outline focus:outline-none text-white font-bold py-1 px-2 rounded" type="submit">Save</button>
 </form>
