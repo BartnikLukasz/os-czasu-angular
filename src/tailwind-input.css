@@ -2,3 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind forms;
+
+html {
+  background-color: rgb(153, 246, 228, 1) !important;
+}

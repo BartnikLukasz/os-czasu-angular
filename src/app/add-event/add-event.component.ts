@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Event } from '../event';
 import { Category } from '../category';
 
@@ -8,28 +8,25 @@ import { Category } from '../category';
   styleUrls: ['./add-event.component.css']
 })
 export class AddEventComponent {
-  event: Event = new Event('', '', '', new Date(), new Date(), '', '');
+  event: Event = new Event('', '', '', '', '', '', '');
   categories: Category[] = [];
 
+  @Output() handleAdd = new EventEmitter();
+
   constructor() {
-    var numberOfCategories = Number(sessionStorage.getItem('numberOfCategories'));
-    for (let i = 0; i < numberOfCategories; i++) {
-      this.categories.push(JSON.parse(sessionStorage.getItem(`category${i}`) ||
-        JSON.stringify(new Category(
-          'category0',
-          'Category 0',
-          'rgba(200,100,100,1)'
-        ))));
-    }
+    this.categories = JSON.parse(sessionStorage.getItem('categories') || '');
   }
 
   onSubmit() {
-    var numberOfEvents = Number(sessionStorage.getItem('numberOfEvents'));
+    console.log("Trying to submit" + this.categories);
     var category = this.categories.find(c => c.id === this.event.category)
-    this.event.id = `event${numberOfEvents}`
-    this.event.backgroundColor = category?.backgroundColor || 'rgba(200,100,100,1)';
-    sessionStorage.setItem(this.event.id, JSON.stringify(this.event));
-
-    sessionStorage.setItem('numberOfEvents', String(numberOfEvents + 1));
+    var events = JSON.parse(sessionStorage.getItem('events') || '') as Array<Event>;
+    this.event.backgroundColor = category?.backgroundColor || '#992222';
+    var numberOfEvents = JSON.parse(sessionStorage.getItem('numberOfEvents') || '');
+    this.event.id = 'event'+numberOfEvents;
+    sessionStorage.setItem('numberOfEvents', numberOfEvents+1);
+    events.push(this.event);
+    sessionStorage.setItem('events', JSON.stringify(events));
+    this.handleAdd.emit(this.event.id);
   }
 }

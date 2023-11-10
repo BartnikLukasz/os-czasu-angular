@@ -2,8 +2,8 @@ export class Event {
   id: string;
   title: string;
   content: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   category: string;
   backgroundColor: string;
 
@@ -11,8 +11,8 @@ export class Event {
     id: string,
     title: string,
     content: string,
-    startDate: Date,
-    endDate: Date,
+    startDate: string,
+    endDate: string,
     category: string,
     backgroundColor: string
   ) {

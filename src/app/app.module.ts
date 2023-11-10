@@ -10,6 +10,7 @@ import { EventComponent } from './event/event.component';
 import { AddEventComponent } from './add-event/add-event.component';
 import { AddCategoryComponent } from './add-category/add-category.component';
 import { EditEventComponent } from './edit-event/edit-event.component';
+import { FilterEventsComponent } from './filter-events/filter-events.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { EditEventComponent } from './edit-event/edit-event.component';
     EventComponent,
     AddEventComponent,
     AddCategoryComponent,
-    EditEventComponent
+    EditEventComponent,
+    FilterEventsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { EditEventComponent } from './edit-event/edit-event.component';
     RouterModule.forRoot([
       {path: 'event-timeline', component: EventTimelineComponent},
       {path: 'categories', component: CategoriesComponent},
-      {path: 'add-event', component: AddEventComponent},
+      {path: '', redirectTo: '/event-timeline', pathMatch: 'full'},
     ]),
   ],
   providers: [],

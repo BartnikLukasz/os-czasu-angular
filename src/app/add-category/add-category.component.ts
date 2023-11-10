@@ -11,11 +11,13 @@ export class AddCategoryComponent {
   @Output() emitter: EventEmitter<any> = new EventEmitter();
 
   onSubmit() {
-    var numberOfCategories = Number(sessionStorage.getItem('numberOfCategories'));
-    this.category.id = `category${numberOfCategories}`;
-    sessionStorage.setItem(this.category.id, JSON.stringify(this.category));
-
-    sessionStorage.setItem('numberOfCategories', String(numberOfCategories + 1));
+    console.log('Adding category: '+this.category.name);
+    var categories = JSON.parse(sessionStorage.getItem('categories') || '') as Array<Category>;
+    var numberOfCategories = JSON.parse(sessionStorage.getItem('numberOfCategories') || '');
+    this.category.id = 'category'+numberOfCategories;
+    categories.push(this.category);
+    sessionStorage.setItem('categories', JSON.stringify(categories));
+    sessionStorage.setItem('numberOfCategories', numberOfCategories+1);
     this.emitter.emit('added category');
   }
 }

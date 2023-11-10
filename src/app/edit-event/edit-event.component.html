@@ -1,6 +1,7 @@
 <button (click)="showHideForm()">Update</button>
-<button (click)="onDelete(eventId)">Delete</button>
-<form *ngIf="isFormVisible" #eventForm="ngForm" (ngSubmit)="onSubmit()">
+<button class="ml-80" (click)="onDelete(event.id)">Delete</button>
+<form class="space-x-4 space-y-4 bg-teal-100" *ngIf="isFormVisible" #eventForm="ngForm" (ngSubmit)="onSubmit()">
+  <div></div>
   <div>
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" [value]="event.title" [(ngModel)]="event.title" required>
@@ -25,5 +26,5 @@
     </select>
   </div>
 
-  <button type="submit">Save</button>
+  <button class="shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white py-1 px-2 rounded" type="submit">Save</button>
 </form>

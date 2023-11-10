@@ -1,5 +1,15 @@
 <section class="cd-timeline js-cd-timeline">
-  <div class="container max-width-lg cd-timeline__container">
-    <app-event *ngFor="let event of events; index as i" [event]="event" (handleDelete)="handleDeleteEvent('event')"></app-event>
+  <div class="flex px-2 text-black space-x-80 bg-teal-300">
+    <app-filter-events class="px-8" (handleFilter)="filterEvents($event)"></app-filter-events>
+    <div class="space-x-4">
+      <button (click)="toggleSortByDate()">Sort by date</button>
+      <button (click)="toggleSortByTitle()">Sort by title</button>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="container max-width-lg cd-timeline__container">
+      <app-event #eventC class="px-2" *ngFor="let event of events; index as i" [event]="event" (handleDelete)="handleDeleteEvent('event')"></app-event>
+    </div>
+    <app-add-event (handleAdd)="refresh()"></app-add-event>
   </div>
 </section>

@@ -9,37 +9,22 @@ import { Category } from '../category';
 })
 export class EditEventComponent {
 
-  event: Event = new Event('', '', '', new Date(), new Date(), '', '');
+  @Input() event: Event = new Event('', '', '', '', '', '', '');
   categories: Category[] = [];
-  @Input() eventId!: string;
   @Output() handleDelete = new EventEmitter();
   isFormVisible: boolean = false;
 
   ngOnInit() {
-    var numberOfCategories = Number(sessionStorage.getItem('numberOfCategories'));
-    for (let i = 0; i < numberOfCategories; i++) {
-      this.categories.push(JSON.parse(sessionStorage.getItem(`category${i}`) ||
-        JSON.stringify(new Category(
-          'category0',
-          'Category 0',
-          '#992222'
-        ))));
+    this.categories = JSON.parse(sessionStorage.getItem('categories') || '');
     }
-
-    this.event = JSON.parse(sessionStorage.getItem(this.eventId) || JSON.stringify(new Event(
-      'event0',
-      'Title of section 1',
-      'Content of section 1',
-      new Date(),
-      new Date(),
-      'category1',
-      '#992222')));
-  }
 
   onSubmit() {
     var category = this.categories.find(c => c.id === this.event.category)
     this.event.backgroundColor = category?.backgroundColor || '#992222';
-    sessionStorage.setItem(this.event.id, JSON.stringify(this.event));
+
+    var events = JSON.parse(sessionStorage.getItem('events') || '') as Array<Event>;
+    events = events.map(e => e.id === this.event.id ? this.event : e);
+    sessionStorage.setItem('events', JSON.stringify(events));
   }
 
   showHideForm() {
@@ -47,10 +32,9 @@ export class EditEventComponent {
   }
 
   onDelete(eventId: string) {
-    sessionStorage.removeItem(eventId);
-    console.log('Removing item: '+eventId);
-    var numberOfEvents = Number(sessionStorage.getItem('numberOfEvents'));
-    sessionStorage.setItem('numberOfEvents', String(numberOfEvents - 1));
+    var events = JSON.parse(sessionStorage.getItem('events') || '') as Array<Event>;
+    events = events.filter(event => event.id !== eventId)
+    sessionStorage.setItem('events', JSON.stringify(events));
     this.handleDelete.emit(eventId);
   }
 

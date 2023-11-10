@@ -1,0 +1,11 @@
+<form class="items-center space-x-4" (ngSubmit)="onSubmit()" #eventFilterForm="ngForm">
+    <label for="categoriesIdIn">Categories:</label>
+    <select name="categoriesIdIn" [(ngModel)]="eventFilter.categoriesIdIn" multiple>
+      <option *ngFor="let category of categories" [ngValue]="category.id">{{category.name}}</option>
+    </select>
+    <label for="eventDateFrom">Event Date From:</label>
+    <input type="date" id="eventDateFrom" [(ngModel)]="eventFilter.eventDateFrom" name="eventDateFrom">
+    <label for="eventDateTo">Event Date To:</label>
+    <input type="date" id="eventDateTo" [(ngModel)]="eventFilter.eventDateTo" name="eventDateTo">
+  <button class="shadow bg-cyan-500 hover:bg-cyan-400 focus:shadow-outline focus:outline-none text-white py-1 px-2 rounded" type="submit">Filter</button>
+</form>
